@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+    .redbutton {
+        width: 15OPX;
+        HEIGHT: 150PX;
+        background-color: red;
+        color: white; 
+        font-weight: bolder;
+    }
+    .greenbutton {
+        width: 100PX;
+        HEIGHT: 150PX;
+        background-color: green;
+        color: white; 
+        font-weight: bolder;
+    }
+    div.a {
+        display: inline-block;
+        text-align: center;
+      }
+      
+      div.b {
+        width: 500px;
+        border: 1px solid black;
+        text-align: justify;
+        align-content: center;
+        display: inline-block;
+      }
+      
+      div.c {
+        width: 50%;
+        border: 1px solid red;  
+        text-align: center;
+      }
+      </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="a">
+        <div class="b">
+            <h1>Counter:</h1><h2>{{session['counter']}} times</h2>
+            <h3>Logged on:</h3>
+            <h4>{{session['name']}}</h4>
+            <h4>{{session['email']}}</h4>
+            <form action="/increment" method="POST">
+                <button type="submit" class="redbutton">ADD 2 SESSIONS</button>
+            </form>
+            <form action="/destroy" method="POST">
+                <button type="submit" class="greenbutton">Reset</button>
+            </form>
+        </div>
+    </div>
+    <div display: inline-block width: 400px;></div>
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <td>
+                <br>
+                <div class="b">
+                <div class="form-group">
+                        <form action="/sessions" method="POST">
+                            <label for="">name</label>
+                            <input type="text" class="form-control" name="name">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="email">
+                            <small id="emailHelpId" class="form-text text-muted">enter name & email</small>
+                            <input type="submit" value="Create"><br>
+                        </form>
+                    </div>
+                    </div>
+                </td>
+            </tbody>
+        </table>        
+    </div>
+</body>
+</html>

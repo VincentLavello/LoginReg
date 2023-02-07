@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <style>
+        .flashmsg {
+            color: red;
+        }
+        .redbutton {
+            width: 80px;
+            height: 40px;
+            margin: 10px;
+            border-radius: 8px;
+            padding: 4px;
+            background-color: red;
+            color: white; 
+            font-weight: bolder;
+            
+        }
+        .greenbutton {
+            width: 80px;
+            height: 40px;
+            margin: 10px;
+            border-radius: 8px;
+            padding: 4px;
+            background-color: green;
+            color: white; 
+            font-weight: bolder;
+        }
+        div.flexstyle {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: center;
+            width: 400px;
+        }
+        div.floatstyle {
+            display: flow-root;
+        }
+        div.a {
+            display: inline-block;
+            text-align: center;
+          }
+          
+          div.b {
+            align-content: center;
+            text-align: left;
+            margin: 0 auto;
+            width: 500px;
+            border: 1px solid darkblue;
+            padding: 10px;
+            border-style: groove;
+            text-align: justify;
+            align-content: center;
+            /* display: flex; */
+            display: inline-block;
+          }
+          
+          div.c {
+            width: 50%;
+            border: 1px solid red;  
+            text-align: center;
+          }
+            #outer { text-align: center; }
+            #inner { text-align: left; margin: 0 auto; }
+            .t { float: left; }
+            table { border: 1px solid black; }
+            #clearit { clear: left; }
+          </style>
+    <title>Login and Registration</title>
+        
+</head>
+<body>
+    <div id="outer">
+        <div class="b" id="inner">
+                <h1>Login and Registration</h1>
+            <table class="table table-bordered table-striped">
+                <tbody><br>
+                    <div class="form-group">
+                        <h2>Register here!</h2>
+                        <form action="/register" method="POST">
+                            <label for="">First Name</label>
+                            <small id="fnameidsm" class="form-text text-muted"></small>
+                            <input type="text" class="form-control" name="fname" id="fnameid" required>
+                            <small id="lnameidsm" class="form-text text-muted"></small>
+                            <label for="">Last Name</label>
+                            <input type="text" class="form-control" name="lname" id="lnameid" required>
+                            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                                {% if messages %}
+                                   {% for message in messages %}            <!-- loop through the messages -->
+                                       <br><small id="emailidsm" class="form-text text-muted flashmsg">{{message}}</small>
+                                       {% endfor %}
+                                {% else %}
+                                    <label for="">Email</label>
+                                    {% endif %}
+                                {% endwith %}
+                            <input type="email" class="form-control" name="email" id="emailid" required>
+                            <label for="">Password: (min 8, upper, lower, number, special character)</label>
+                            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                                {% if messages %}                            <!-- check if there are any messages -->
+                                    {% for message in messages %}            <!-- loop through the messages -->
+                                        <br><small id="pwdidsm" class="form-text text-muted flashmsg">{{message}}</small>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+                            <input type="password" class="form-control" name="pwd" id="pwdid" minlength="8" required>
+                            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                                {% if messages %}
+                                    {% for message in messages %}            <!-- loop through the messages -->
+                                    <br>    
+                                    <small id="pwdconfirmidsm" class="form-text text-muted flashmsg">{{message}}</small>
+                                    {% endfor %}
+                                {% else %}
+                                    <label for="">Confirm Password</label>
+                                {% endif %}
+                            {% endwith %}
+                            <input type="password" class="form-control" name="pwdconfirm" id="pwdconfirmid"  minlength="8" required>                          
+                            <input type="submit" class="greenbutton" value="Register"><br>
+                        </form>
+                    </div>
+                    </td>
+                </tbody>
+            </table>        
+            <div class="t">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <td>
+                    <h2>Login:</h2>
+                    <form action="/login" method="POST">
+                        <small id="emailidsm" class="form-text text-muted"></small>
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" name="email" id="emailid" required>
+                        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                            {% if messages %}
+                                {% for message in messages %}            <!-- loop through the messages -->                        
+                                <small id="pwdidsm" class="form-text text-muted">{{message}}</small>
+                                {% endfor %}
+                            {% else %}
+                                <label for="">Password:</label>
+                            {% endif %}
+                        {% endwith %}
+                        <input type="password" class="form-control" name="loginpwd" id="loginpwdid" minlength="8" required>
+                        <input type="submit" class="greenbutton" value="Login"><br>
+                    </form>
+                    </td>
+                </tbody>
+            </table>
+            </div> 
+        </div>
+        <div id="clearit"></div>     
+    </div>
+</body>
+</html>
